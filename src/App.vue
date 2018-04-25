@@ -14,6 +14,7 @@
       }
     },
     created: function () {
+      // Get data from locale storage
       let dataStart = JSON.parse(localStorage.getItem('saveGame'));
       this.total = dataStart !== null ? dataStart.total : 0;
 
@@ -27,7 +28,7 @@
     methods: {
       increment: function (count) {
         this.total += count;
-      },
+      }, // this function will be used for looping elements
       loop: function (count) {
         setInterval(() => {
           this.increment(count);
