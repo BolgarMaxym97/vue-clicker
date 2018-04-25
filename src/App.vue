@@ -2,7 +2,7 @@
   <div>
     <h1>{{total.toLocaleString()}}</h1>
     <button @click="increment(1)">+1</button>
-    <!--<button @click="loop(1)">loop</button>-->
+    <button @click="loop(1)">loop</button>
   </div>
 </template>
 
