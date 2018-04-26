@@ -1,0 +1,38 @@
+{
+  "0": {
+    "name": "One",
+    "cost": 100,
+    "count": 0,
+    "boost": 1
+  },
+  "1": {
+    "name": "Two",
+    "cost": 2000,
+    "count": 0,
+    "boost": 10
+  },
+  "2": {
+    "name": "Three",
+    "cost": 10000,
+    "count": 0,
+    "boost": 50
+  },
+  "3": {
+    "name": "Four",
+    "cost": 50000,
+    "count": 0,
+    "boost": 200
+  },
+  "4": {
+    "name": "Five",
+    "cost": 100000,
+    "count": 0,
+    "boost": 500
+  },
+  "5": {
+    "name": "Six",
+    "cost": 200000,
+    "count": 0,
+    "boost": 1000
+  }
+}
