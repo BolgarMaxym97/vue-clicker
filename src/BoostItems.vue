@@ -1,11 +1,11 @@
 <template>
   <div class="boost-items">
     <div class="boost-item" v-for="(item, index) in boostItems" v-if="index == 0 || boostItems[index - 1].count !== 0">
-      <span class="item-name">Имя: {{item.name}}</span>
+      <span class="item-name">Имя: <b>{{item.name}}</b></span>
       <span class="item-count">Количество: <b>{{item.count}}</b></span>
-      <span class="item-cost">Стоимость: {{parseInt(item.cost)}}</span>
-      <span class="item-boost">Boost: {{item.boost}}</span>
-      <button class="item-boost-btn" @click="boost(item)" :disabled="parseInt(total) < parseInt(item.cost)">Click
+      <span class="item-cost">Стоимость: <b>{{parseInt(item.cost)}}</b></span>
+      <span class="item-boost">Кликов в секунду: <b>{{item.boost}}</b></span>
+      <button class="item-boost-btn" @click="boost(item)" :disabled="parseInt(total) < parseInt(item.cost)">Купить
       </button>
       <span></span>
     </div>
@@ -44,6 +44,8 @@
             total: this.total,
             clickBoostItem: this.clickBoostItem,
             clickBoostCost: this.clickBoostCost,
+            currentClickBoost: this.currentClickBoost,
+            totalBoostPerSecond: this.totalBoostPerSecond,
           }));
       };
     },
@@ -59,6 +61,14 @@
       clickBoostCost: function () {
         // `this` указывает на экземпляр vm
         return this.$parent.clickBoostCost
+      },
+      currentClickBoost: function () {
+        // `this` указывает на экземпляр vm
+        return this.$parent.currentClickBoost
+      },
+      totalBoostPerSecond: function () {
+        // `this` указывает на экземпляр vm
+        return this.$parent.totalBoostPerSecond
       },
     },
     methods: {
