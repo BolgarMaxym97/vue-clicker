@@ -3,8 +3,8 @@
     <div class="boost-item" v-for="(item, index) in boostItems" v-if="index == 0 || boostItems[index - 1].count !== 0">
       <span class="item-name">Имя: <b>{{item.name}}</b></span>
       <span class="item-count">Количество: <b>{{item.count}}</b></span>
-      <span class="item-cost">Стоимость: <b>{{parseInt(item.cost)}}</b></span>
-      <span class="item-boost">Кликов в секунду: <b>{{item.boost}}</b></span>
+      <span class="item-cost">Стоимость: <b>{{parseInt(item.cost).toLocaleString()}}</b></span>
+      <span class="item-boost">Кликов в секунду: <b>{{item.boost.toLocaleString()}}</b></span>
       <button class="item-boost-btn" @click="boost(item)" :disabled="parseInt(total) < parseInt(item.cost)">Купить
       </button>
       <span></span>
