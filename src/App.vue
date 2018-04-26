@@ -2,7 +2,7 @@
   <div id="main-content">
     <div id="total-count">{{total.toLocaleString()}}</div>
     <button @click="increment(clickBoostItem)">+1</button>
-    <button @click="clickBoost" :disabled="parseInt(total) < parseInt(clickBoostCost)">Увеличить на 80% -
+    <button @click="clickBoost" :disabled="parseInt(total) < parseInt(clickBoostCost)">Буст на клик -
       стоимость {{clickBoostCost.toLocaleString()}}
     </button>
     <p><i>Текущий буст на клик - </i><b>{{currentClickBoost.toLocaleString()}}</b></p>
@@ -56,7 +56,7 @@
         this.currentClickBoost += this.clickBoostItem;
         this.total -= this.clickBoostCost;
         this.clickBoostItem *= this.clickBoostItem % 2 === 0 ? 1.5 : 2;
-        this.clickBoostCost *= 2;
+        this.clickBoostCost *= 4;
       },
     },
   }
