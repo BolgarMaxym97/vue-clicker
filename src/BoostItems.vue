@@ -1,6 +1,6 @@
 <template>
   <div class="boost-items">
-    <div class="boost-item" v-for="item in boostItems">
+    <div class="boost-item" v-for="(item, index) in boostItems" v-if="index == 0 || boostItems[index - 1].count !== 0">
       <span class="item-name">Имя: {{item.name}}</span>
       <span class="item-count">Количество: <b>{{item.count}}</b></span>
       <span class="item-cost">Стоимость: {{parseInt(item.cost)}}</span>
@@ -39,14 +39,27 @@
       window.onbeforeunload = (e) => {
         e.preventDefault();
         localStorage.setItem('saveBoost', JSON.stringify(dataSave));
-        localStorage.setItem('saveGame', JSON.stringify({total: this.total}));
+        localStorage.setItem('saveGame', JSON.stringify(
+          {
+            total: this.total,
+            clickBoostItem: this.clickBoostItem,
+            clickBoostCost: this.clickBoostCost,
+          }));
       };
     },
     computed: {
       total: function () {
         // `this` указывает на экземпляр vm
         return this.$parent.total
-      }
+      },
+      clickBoostItem: function () {
+        // `this` указывает на экземпляр vm
+        return this.$parent.clickBoostItem
+      },
+      clickBoostCost: function () {
+        // `this` указывает на экземпляр vm
+        return this.$parent.clickBoostCost
+      },
     },
     methods: {
       boost: function (item) {

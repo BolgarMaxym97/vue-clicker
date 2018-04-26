@@ -1,7 +1,10 @@
 <template>
   <div id="main-content">
     <div id="total-count">{{total.toLocaleString()}}</div>
-    <button @click="increment(100)">+1</button>
+    <button @click="increment(clickBoostItem)">+1</button>
+    <button @click="clickBoost" :disabled="parseInt(total) < parseInt(clickBoostCost)">clickBoost {{clickBoostItem * 2}}
+      cost {{clickBoostCost}}
+    </button>
     <boostItems></boostItems>
   </div>
 </template>
@@ -13,6 +16,8 @@
     data: () => {
       return {
         total: 0,
+        clickBoostItem: 1,
+        clickBoostCost: 50,
       }
     },
     components: {
@@ -22,6 +27,8 @@
       // Get data from locale storage
       let dataStart = JSON.parse(localStorage.getItem('saveGame'));
       this.total = dataStart !== null ? dataStart.total : 0;
+      this.clickBoostItem = dataStart !== null ? dataStart.clickBoostItem : 1;
+      this.clickBoostCost = dataStart !== null ? dataStart.clickBoostCost : 50;
     },
     methods: {
       increment: function (count) {
@@ -37,6 +44,11 @@
         setInterval(() => {
           this.increment(item.boost);
         }, 1000 / parseInt(item.count));
+      },
+      clickBoost: function () {
+        this.total -= this.clickBoostCost;
+        this.clickBoostItem *= 2;
+        this.clickBoostCost *= 2;
       },
     },
   }
