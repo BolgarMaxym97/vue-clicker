@@ -5,8 +5,8 @@
     <button @click="clickBoost" :disabled="parseInt(total) < parseInt(clickBoostCost)">Увеличить на {{clickBoostItem}} -
       стоимость {{clickBoostCost}}
     </button>
-    <p>Текущий буст на клик {{currentClickBoost}}</p>
-    <p>Текущий буст в секунду {{totalBoostPerSecond}}</p>
+    <p><i>Текущий буст на клик - </i><b>{{currentClickBoost}}</b></p>
+    <p><i>Текущий буст в секунду - </i><b>{{totalBoostPerSecond}}</b></p>
     <boostItems></boostItems>
   </div>
 </template>
