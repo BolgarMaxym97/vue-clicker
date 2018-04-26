@@ -17,7 +17,6 @@
 
   export default {
     data() {
-      // Get data from locale storage
       return {
         boostItems: {},
       }

@@ -63,5 +63,14 @@
 </script>
 
 <style>
+  #main-content {
+    text-align: center;
+  }
+
+  #total-count {
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+  }
 
 </style>
