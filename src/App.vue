@@ -33,7 +33,8 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <button class="boost-btn-main" @click="clickBoost" :disabled="parseInt(total) < parseInt(clickBoostCost)"><i class="fas fa-mouse-pointer"></i> -
+                  <button class="boost-btn-main" @click="clickBoost"
+                          :disabled="parseInt(total) < parseInt(clickBoostCost)"><i class="fas fa-mouse-pointer"></i> -
                     {{clickBoostCost.toLocaleString()}} $
                   </button>
                 </div>
@@ -85,6 +86,9 @@
       this.currentClickBoost = dataStart !== null ? dataStart.currentClickBoost : 0;
       this.totalBoostPerSecond = dataStart !== null ? dataStart.totalBoostPerSecond : 0;
       this.messages = dataStart !== null ? dataStart.messages : [];
+      if (!dataStart.messages) {
+        this.messages = [];
+      }
     },
     methods: {
       increment: function (count) {
@@ -92,7 +96,7 @@
       }, // this function will be used for looping elements
       loop: function (item) {
         let newDate = new Date();
-        this.messages.push(newDate.today() + ' ' + newDate.timeNow() +' Куплено улучшение на клик в секунду - ' + item.name)
+        this.messages.push(newDate.today() + ' ' + newDate.timeNow() + ' Куплено улучшение на клик в секунду - ' + item.name)
         this.total -= parseInt(item.cost);
         this.totalBoostPerSecond += parseInt(item.boost);
         setInterval(() => {
@@ -106,7 +110,7 @@
       },
       clickBoost: function () {
         let newDate = new Date();
-        this.messages.push(newDate.today() + ' ' + newDate.timeNow() +' Клик увеличен на  - ' + this.clickBoostItem + ' единиц');
+        this.messages.push(newDate.today() + ' ' + newDate.timeNow() + ' Клик увеличен на  - ' + this.clickBoostItem + ' единиц');
         this.currentClickBoost += this.clickBoostItem;
         this.total -= this.clickBoostCost;
         this.clickBoostItem *= this.clickBoostItem % 2 === 0 ? 1.5 : 2;
@@ -201,16 +205,20 @@
     border: 1px solid #000;
     padding: 2em;
   }
+
   .boost-btn-main {
     float: right;
   }
+
   .boost-block {
     border: 1px solid #000;
   }
+
   .title-boost {
     font-size: 24px;
     font-weight: bold;
   }
+
   .main-title {
     font-size: 80px;
     top: 10%;
