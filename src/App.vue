@@ -16,7 +16,7 @@
         <div class="col-md-4">
           <div id="main-block">
             <div id="total-count">{{total.toLocaleString()}}</div>
-            <button title="+1" class="btn btn-2 btn-2a" @click="increment(clickBoostItem +100000)">$</button>
+            <button title="+1" class="btn btn-2 btn-2a" @click="increment(clickBoostItem)">$</button>
           </div>
         </div>
       </div>
