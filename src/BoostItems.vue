@@ -10,7 +10,9 @@
           <button class="item-boost-btn" @click="boost(item)" :disabled="parseInt(total) < parseInt(item.cost)">
             <i class="fas fa-money-bill-alt"><b> &nbsp;{{parseInt(item.cost).toLocaleString()}}</b></i>
             =>
-            <span class="item-boost"><i class="fas fa-plus-square" :title="item.boost.toLocaleString() + ' нажатий в секунду'" style="cursor: pointer;"></i></span>
+            <span class="item-boost"><i class="fas fa-plus-square"
+                                        :title="item.boost.toLocaleString() + ' нажатий в секунду'"
+                                        style="cursor: pointer;"></i></span>
           </button>
         </div>
       </div>
@@ -52,6 +54,7 @@
             clickBoostCost: this.clickBoostCost,
             currentClickBoost: this.currentClickBoost,
             totalBoostPerSecond: this.totalBoostPerSecond,
+            totalAchivments: this.totalAchivments,
             messages: this.messages,
           }));
       };
@@ -80,6 +83,10 @@
       messages: function () {
         // `this` указывает на экземпляр vm
         return this.$parent.messages
+      },
+      totalAchivments: function () {
+        // `this` указывает на экземпляр vm
+        return this.$parent.totalAchivments
       },
     },
     methods: {
