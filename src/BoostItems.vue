@@ -4,12 +4,13 @@
       <div class="row">
         <div class="col-md-8">
           <span class="item-name"><i :class="item.icon"></i>&nbsp;<b>{{item.name}}</b></span>
-          <span class="item-count"> x <b title="Количество" style="cursor: pointer;">{{item.count}}</b></span>
-          <span class="item-boost"><i class="fas fa-plus-square" :title="item.boost.toLocaleString() + ' нажатий в секунду'" style="cursor: pointer;"></i></span>
+          <span class="item-count"> | Куплено:  <b title="Количество" style="cursor: pointer;">{{item.count}}</b></span>
         </div>
         <div class="col-md-4">
           <button class="item-boost-btn" @click="boost(item)" :disabled="parseInt(total) < parseInt(item.cost)">
             <i class="fas fa-money-bill-alt"><b> &nbsp;{{parseInt(item.cost).toLocaleString()}}</b></i>
+            =>
+            <span class="item-boost"><i class="fas fa-plus-square" :title="item.boost.toLocaleString() + ' нажатий в секунду'" style="cursor: pointer;"></i></span>
           </button>
         </div>
       </div>
@@ -51,6 +52,7 @@
             clickBoostCost: this.clickBoostCost,
             currentClickBoost: this.currentClickBoost,
             totalBoostPerSecond: this.totalBoostPerSecond,
+            messages: this.messages,
           }));
       };
     },
@@ -74,6 +76,10 @@
       totalBoostPerSecond: function () {
         // `this` указывает на экземпляр vm
         return this.$parent.totalBoostPerSecond
+      },
+      messages: function () {
+        // `this` указывает на экземпляр vm
+        return this.$parent.messages
       },
     },
     methods: {

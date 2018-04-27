@@ -3,6 +3,9 @@
     <div id="header">
       <div class="row" style="min-height: 10em;">
         <div class="col-md-4">
+          <div class="main-title">
+            Clicker
+          </div>
         </div>
         <div class="col-md-4 text-center justify-content-center align-self-center">
           <div class="info">
@@ -13,7 +16,7 @@
         <div class="col-md-4">
           <div id="main-block">
             <div id="total-count">{{total.toLocaleString()}}</div>
-            <button title="+1" class="btn btn-2 btn-2a" @click="increment(clickBoostItem)">$</button>
+            <button title="+1" class="btn btn-2 btn-2a" @click="increment(clickBoostItem +100000)">$</button>
           </div>
         </div>
       </div>
@@ -30,8 +33,8 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <button class="boost-btn-main" @click="clickBoost" :disabled="parseInt(total) < parseInt(clickBoostCost)">Буст на клик -
-                    стоимость {{clickBoostCost.toLocaleString()}}
+                  <button class="boost-btn-main" @click="clickBoost" :disabled="parseInt(total) < parseInt(clickBoostCost)"><i class="fas fa-mouse-pointer"></i> -
+                    {{clickBoostCost.toLocaleString()}} $
                   </button>
                 </div>
               </div>
@@ -41,9 +44,10 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="overflow: hidden;">
           <div class="info-window">
             <div class="info-window-content">
+              <div v-for="(msg, index) in messages">{{msg}}</div>
               <span class="bootom-align">
               > <span class="flash">__</span>
               </span>
@@ -66,6 +70,7 @@
         clickBoostCost: 50,
         currentClickBoost: 0,
         totalBoostPerSecond: 0,
+        messages: [],
       }
     },
     components: {
@@ -79,12 +84,15 @@
       this.clickBoostCost = dataStart !== null ? dataStart.clickBoostCost : 50;
       this.currentClickBoost = dataStart !== null ? dataStart.currentClickBoost : 0;
       this.totalBoostPerSecond = dataStart !== null ? dataStart.totalBoostPerSecond : 0;
+      this.messages = dataStart !== null ? dataStart.messages : [];
     },
     methods: {
       increment: function (count) {
         this.total += count;
       }, // this function will be used for looping elements
       loop: function (item) {
+        let newDate = new Date();
+        this.messages.push(newDate.today() + ' ' + newDate.timeNow() +' Куплено улучшение на клик в секунду - ' + item.name)
         this.total -= parseInt(item.cost);
         this.totalBoostPerSecond += parseInt(item.boost);
         setInterval(() => {
@@ -97,6 +105,8 @@
         }, 1000 / parseInt(item.count));
       },
       clickBoost: function () {
+        let newDate = new Date();
+        this.messages.push(newDate.today() + ' ' + newDate.timeNow() +' Клик увеличен на  - ' + this.clickBoostItem + ' единиц');
         this.currentClickBoost += this.clickBoostItem;
         this.total -= this.clickBoostCost;
         this.clickBoostItem *= this.clickBoostItem % 2 === 0 ? 1.5 : 2;
@@ -200,5 +210,11 @@
   .title-boost {
     font-size: 24px;
     font-weight: bold;
+  }
+  .main-title {
+    font-size: 80px;
+    top: 10%;
+    position: relative;
+    left: 1em;
   }
 </style>
