@@ -1,12 +1,18 @@
 <template>
   <div class="boost-items">
     <div class="boost-item" v-for="(item, index) in boostItems" v-if="index == 0 || boostItems[index - 1].count !== 0">
-      <span class="item-name">Имя: <b>{{item.name}}</b></span>
-      <span class="item-count">Количество: <b>{{item.count}}</b></span>
-      <span class="item-cost">Стоимость: <b>{{parseInt(item.cost).toLocaleString()}}</b></span>
-      <span class="item-boost">Кликов в секунду: <b>{{item.boost.toLocaleString()}}</b></span>
-      <button class="item-boost-btn" @click="boost(item)" :disabled="parseInt(total) < parseInt(item.cost)">Купить
-      </button>
+      <div class="row">
+        <div class="col-md-8">
+          <span class="item-name"><i :class="item.icon"></i>&nbsp;<b>{{item.name}}</b></span>
+          <span class="item-count"> x <b title="Количество" style="cursor: pointer;">{{item.count}}</b></span>
+          <span class="item-boost"><i class="fas fa-plus-square" :title="item.boost.toLocaleString() + ' нажатий в секунду'" style="cursor: pointer;"></i></span>
+        </div>
+        <div class="col-md-4">
+          <button class="item-boost-btn" @click="boost(item)" :disabled="parseInt(total) < parseInt(item.cost)">
+            <i class="fas fa-money-bill-alt"><b> &nbsp;{{parseInt(item.cost).toLocaleString()}}</b></i>
+          </button>
+        </div>
+      </div>
       <span></span>
     </div>
   </div>
@@ -84,5 +90,13 @@
 </script>
 
 <style>
+  .boost-item {
+    border: solid 1px #000;
+    padding: 0.5em;
+    margin: 0.5em;
+  }
 
+  .item-boost-btn {
+    float: right;
+  }
 </style>
