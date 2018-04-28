@@ -10,7 +10,8 @@
             <div class="child" v-for="(child, childIndex) in item.childrens">
               <!--v-if="childIndex == 0 || item.childrens[childIndex - 1].count !== 0"-->
               <span class="child-item " :title="child.name + ' - улучшает ' + item.name + ' в ' + child.boost + ' раз'"
-                    v-bind:class="{ deactive: !child.isActive || item.count === 0 }" data-toggle="tooltip"
+                    v-bind:class="{ deactive: !child.isActive || item.count === 0 || total < child.cost }"
+                    data-toggle="tooltip"
                     data-placement="top">
                 <img :src="'/src/assets/svg/items/childs/'+child.icon+'.svg'" :class="child.icon"
                      @click="boost4boost(item, child)"></span>
@@ -113,6 +114,7 @@
         this.messages.push(newDate.today() + ' ' + newDate.timeNow() + ' Куплено - <b>' + item.name + '</b>')
         item.isActive = false;
         parent.boost *= item.boost;
+        this.$parent.total -= item.cost;
       }
     },
   }
