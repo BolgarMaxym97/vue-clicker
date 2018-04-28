@@ -10,8 +10,8 @@
         </div>
         <div class="col-md-4 text-center justify-content-center align-self-center">
           <div class="info">
-            <p><i>Текущее улучшение на клик - </i><b>{{currentClickBoost.toLocaleString()}}</b></p>
-            <p><i>Текущее улучшение на клик в секунду - </i><b>{{totalBoostPerSecond.toLocaleString()}}</b></p>
+            <p><i>Зубочисток за клик - </i><b>{{currentClickBoost.toLocaleString()}}</b></p>
+            <p><i>Зубочисток в секунду - </i><b>{{totalBoostPerSecond.toLocaleString()}}</b></p>
           </div>
         </div>
         <div class="col-md-4">

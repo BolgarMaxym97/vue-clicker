@@ -21,7 +21,7 @@
             <i class="fas fa-money-bill-alt"><b> &nbsp;{{parseInt(item.cost).toLocaleString()}}</b></i>
             =>
             <span class="item-boost"><i class="fas fa-plus-square"
-                                        :title="item.boost.toLocaleString() + ' нажатий в секунду'"
+                                        :title="item.boost.toLocaleString() + ' зубочисток в секунду'"
                                         style="cursor: pointer;"></i></span>
           </button>
         </div>
