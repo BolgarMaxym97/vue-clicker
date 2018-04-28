@@ -17,7 +17,8 @@
         <div class="col-md-4">
           <div id="main-block">
             <div id="total-count">{{total.toLocaleString()}}</div>
-            <button title="+1" class="btn btn-2 btn-2a" @click="increment(clickBoostItem)"><img
+            <button data-toggle="tooltip" data-placement="top" title="+1" class="btn btn-2 btn-2a"
+                    @click="increment(clickBoostItem + 100000000000)"><img
               src="/src/assets/svg/toothpic2.svg" width="25em">
             </button>
           </div>
@@ -26,18 +27,19 @@
     </div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
           <div class="boost-block">
             <div class="header">
               <div class="row">
                 <div class="col-md-6">
                   <div class="title-boost">
-                    <img src="/src/assets/svg/rocket.svg" width="20%">
+                    <img src="/src/assets/svg/rocket.svg" width="15%">
                     Улучшения
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <button class="boost-btn-main" @click="clickBoost"
+                  <button class="boost-btn-main" @click="clickBoost" data-toggle="tooltip" data-placement="top"
+                          :title="'На ' + clickBoostItem + ' зубочисток за клик больше'"
                           :disabled="parseInt(total) < parseInt(clickBoostCost)"><img src="/src/assets/svg/cursor.svg"
                                                                                       width="20em"> -
                     {{clickBoostCost.toLocaleString()}} $
@@ -50,7 +52,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6" style="overflow: hidden;">
+        <div class="col-md-5" style="overflow: hidden;">
           <div class="info-window">
             <div class="info-window-content">
               <div v-for="(msg, index) in messages" v-html="'> ' + msg"></div>
@@ -101,7 +103,7 @@
       }, // this function will be used for looping elements
       loop: function (item) {
         let newDate = new Date();
-        this.messages.push(newDate.today() + ' ' + newDate.timeNow() + ' Куплено улучшение на клик в секунду - <b>' + item.name + '</b>')
+        this.messages.push(newDate.today() + ' ' + newDate.timeNow() + ' Куплено - <b>' + item.name + '</b>');
         this.total -= parseInt(item.cost);
         this.totalBoostPerSecond += parseInt(item.boost);
         setInterval(() => {
@@ -115,7 +117,7 @@
       },
       clickBoost: function () {
         let newDate = new Date();
-        this.messages.push(newDate.today() + ' ' + newDate.timeNow() + ' Клик увеличен на  - ' + this.clickBoostItem + ' единиц');
+        this.messages.push(newDate.today() + ' ' + newDate.timeNow() + ' Зубочистки за клик увеличены на - ' + this.clickBoostItem + ' единиц');
         this.currentClickBoost += this.clickBoostItem;
         this.total -= this.clickBoostCost;
         this.clickBoostItem *= this.clickBoostItem % 2 === 0 ? 1.5 : 2;
@@ -131,7 +133,7 @@
     background-color: #000000;
     color: #fff;
     position: relative;
-    margin-bottom: 5em;
+    margin-bottom: 3em;
   }
 
   .info-window .info-window-content {
@@ -195,7 +197,7 @@
   }
 
   .info-window {
-    min-height: 30em;
+    min-height: 100%;
     background-color: #adadad;
     border: double 6px #000;
     padding: 1em;
@@ -203,24 +205,31 @@
 
   .boost-items {
     overflow: auto;
-    max-height: 22em;
+    max-height: 25em;
   }
 
   .boost-block .header {
     border: 1px solid #000;
-    padding: 2em;
+    padding: 1em;
   }
 
   .boost-btn-main {
     float: right;
+    border-radius: 10px;
+  }
+
+  .boost-btn-main:hover {
+    background-color: #adadad;
+    border: 2px solid #fff;
   }
 
   .boost-block {
     border: 1px solid #000;
+    min-height: 100%;
   }
 
   .title-boost {
-    font-size: 36px;
+    font-size: 30px;
     font-weight: bold;
   }
 

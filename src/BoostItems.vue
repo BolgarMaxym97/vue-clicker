@@ -2,28 +2,28 @@
   <div class="boost-items">
     <div class="boost-item" v-for="(item, index) in boostItems" v-if="index == 0 || boostItems[index - 1].count !== 0">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
           <span class="item-name"><img
             :src="'/src/assets/svg/items/'+item.icon+'.svg'">&nbsp;<b>{{item.name}}</b></span>
           <span class="item-count"> | Куплено:  <b title="Количество" style="cursor: pointer;">{{item.count}}</b></span>
           <div class="childrens">
             <div class="child" v-for="(child, childIndex) in item.childrens">
               <!--v-if="childIndex == 0 || item.childrens[childIndex - 1].count !== 0"-->
-              <span class="child-item " :title="child.name + ' - улучшает ' + item.name + ' в ' + child.boost + ' раза'"
-                    v-bind:class="{ deactive: !child.isActive }">
-                <img :src="'/src/assets/svg/items/'+child.icon+'.svg'" :class="child.icon"
+              <span class="child-item " :title="child.name + ' - улучшает ' + item.name + ' в ' + child.boost + ' раз'"
+                    v-bind:class="{ deactive: !child.isActive || item.count === 0 }" data-toggle="tooltip"
+                    data-placement="top">
+                <img :src="'/src/assets/svg/items/childs/'+child.icon+'.svg'" :class="child.icon"
                      @click="boost4boost(item, child)"></span>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <button class="item-boost-btn" @click="boost(item)" :disabled="parseInt(total) < parseInt(item.cost)">
-            <i class="fas fa-money-bill-alt"><b> &nbsp;{{parseInt(item.cost).toLocaleString()}}</b></i>
-            =>
-            <span class="item-boost"><i class="fas fa-plus-square"
-                                        :title="item.boost.toLocaleString() + ' зубочисток в секунду'"
-                                        style="cursor: pointer;"></i></span>
+            <img src="/src/assets/svg/money.svg" width="40em" data-toggle="tooltip" data-placement="top"
+                 :title="item.boost.toLocaleString() + ' зубочисток в секунду. Стоимость: ' + parseInt(item.cost).toLocaleString()"
+                 style="cursor: pointer;">
           </button>
+          <div class="item-desc">{{item.desc}}</div>
         </div>
       </div>
       <span></span>
@@ -109,6 +109,8 @@
         this.$parent.startLoop(item);
       },
       boost4boost: function (parent, item) {
+        let newDate = new Date();
+        this.messages.push(newDate.today() + ' ' + newDate.timeNow() + ' Куплено - <b>' + item.name + '</b>')
         item.isActive = false;
         parent.boost *= item.boost;
       }
@@ -148,13 +150,13 @@
   }
 
   .childrens .child-item {
-    padding: 10px 5px;
+    padding: 17px 5px;
     border: 1px solid #000;
     margin: 3px;
   }
 
   .child-item img {
-    width: 2em;
+    width: 3em;
   }
 
   .deactive {
@@ -166,7 +168,16 @@
   }
 
   .item-name img {
-    width: 3em;
+    width: 5em;
     cursor: pointer;
+  }
+
+  .item-desc {
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    max-height: 5em;
+    font-weight: bold;
+    margin: 1em;
   }
 </style>
