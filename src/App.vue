@@ -18,7 +18,7 @@
           <div id="main-block">
             <div id="total-count">{{total.toLocaleString()}}</div>
             <button data-toggle="tooltip" data-placement="top" title="+1" class="btn btn-2 btn-2a"
-                    @click="increment(clickBoostItem + 100000000000)"><img
+                    @click="increment(clickBoostItem)"><img
               src="/src/assets/svg/toothpic2.svg" width="25em">
             </button>
           </div>
