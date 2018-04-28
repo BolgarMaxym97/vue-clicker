@@ -3,8 +3,18 @@
     <div class="boost-item" v-for="(item, index) in boostItems" v-if="index == 0 || boostItems[index - 1].count !== 0">
       <div class="row">
         <div class="col-md-8">
-          <span class="item-name"><i :class="item.icon"></i>&nbsp;<b>{{item.name}}</b></span>
+          <span class="item-name"><img
+            :src="'/src/assets/svg/items/'+item.icon+'.svg'">&nbsp;<b>{{item.name}}</b></span>
           <span class="item-count"> | Куплено:  <b title="Количество" style="cursor: pointer;">{{item.count}}</b></span>
+          <div class="childrens">
+            <div class="child" v-for="(child, childIndex) in item.childrens">
+              <!--v-if="childIndex == 0 || item.childrens[childIndex - 1].count !== 0"-->
+              <span class="child-item " :title="child.name + ' - улучшает ' + item.name + ' в ' + child.boost + ' раза'"
+                    v-bind:class="{ deactive: !child.isActive }">
+                <img :src="'/src/assets/svg/items/'+child.icon+'.svg'" :class="child.icon"
+                     @click="boost4boost(item, child)"></span>
+            </div>
+          </div>
         </div>
         <div class="col-md-4">
           <button class="item-boost-btn" @click="boost(item)" :disabled="parseInt(total) < parseInt(item.cost)">
@@ -97,6 +107,10 @@
       },
       startBoost: function (item) {
         this.$parent.startLoop(item);
+      },
+      boost4boost: function (parent, item) {
+        item.isActive = false;
+        parent.boost *= item.boost;
       }
     },
   }
@@ -111,5 +125,48 @@
 
   .item-boost-btn {
     float: right;
+  }
+
+  .childrens {
+    margin-top: 5px;
+  }
+
+  .childrens .child-item {
+    cursor: pointer;
+  }
+
+  .child {
+    display: inline-block;
+  }
+
+  .childrens .child-item:hover {
+    background-color: #c1c1c1;
+  }
+
+  .childrens {
+    margin-top: 1em;
+  }
+
+  .childrens .child-item {
+    padding: 10px 5px;
+    border: 1px solid #000;
+    margin: 3px;
+  }
+
+  .child-item img {
+    width: 2em;
+  }
+
+  .deactive {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: #757575;
+    background-color: #c1c1c1;
+  }
+
+  .item-name img {
+    width: 3em;
+    cursor: pointer;
   }
 </style>

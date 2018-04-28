@@ -1,10 +1,11 @@
 <template>
   <div id="main-content">
     <div id="header">
-      <div class="row" style="min-height: 10em;">
+      <div class="row" style="min-height: 10em; max-width: 100%">
         <div class="col-md-4">
           <div class="main-title">
-            Clicker
+            <img src="/src/assets/svg/toothpick.svg" width="20%">
+            Кликер
           </div>
         </div>
         <div class="col-md-4 text-center justify-content-center align-self-center">
@@ -16,7 +17,9 @@
         <div class="col-md-4">
           <div id="main-block">
             <div id="total-count">{{total.toLocaleString()}}</div>
-            <button title="+1" class="btn btn-2 btn-2a" @click="increment(clickBoostItem)">$</button>
+            <button title="+1" class="btn btn-2 btn-2a" @click="increment(clickBoostItem)"><img
+              src="/src/assets/svg/toothpic2.svg" width="25em">
+            </button>
           </div>
         </div>
       </div>
@@ -29,12 +32,14 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="title-boost">
+                    <img src="/src/assets/svg/rocket.svg" width="20%">
                     Улучшения
                   </div>
                 </div>
                 <div class="col-md-6">
                   <button class="boost-btn-main" @click="clickBoost"
-                          :disabled="parseInt(total) < parseInt(clickBoostCost)"><i class="fas fa-mouse-pointer"></i> -
+                          :disabled="parseInt(total) < parseInt(clickBoostCost)"><img src="/src/assets/svg/cursor.svg"
+                                                                                      width="20em"> -
                     {{clickBoostCost.toLocaleString()}} $
                   </button>
                 </div>
@@ -48,7 +53,7 @@
         <div class="col-md-6" style="overflow: hidden;">
           <div class="info-window">
             <div class="info-window-content">
-              <div v-for="(msg, index) in messages">{{msg}}</div>
+              <div v-for="(msg, index) in messages" v-html="'> ' + msg"></div>
               <span class="bootom-align">
               > <span class="flash">__</span>
               </span>
@@ -96,7 +101,7 @@
       }, // this function will be used for looping elements
       loop: function (item) {
         let newDate = new Date();
-        this.messages.push(newDate.today() + ' ' + newDate.timeNow() + ' Куплено улучшение на клик в секунду - ' + item.name)
+        this.messages.push(newDate.today() + ' ' + newDate.timeNow() + ' Куплено улучшение на клик в секунду - <b>' + item.name + '</b>')
         this.total -= parseInt(item.cost);
         this.totalBoostPerSecond += parseInt(item.boost);
         setInterval(() => {
@@ -215,8 +220,12 @@
   }
 
   .title-boost {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
+  }
+
+  .title-boost img {
+    margin-right: 0.5em;
   }
 
   .main-title {

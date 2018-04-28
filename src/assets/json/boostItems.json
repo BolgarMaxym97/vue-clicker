@@ -3,126 +3,226 @@
     "name": "Буст № 1",
     "cost": 100,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 1
+    "icon": "axe",
+    "boost": 1,
+    "childrens": {
+      "0": {
+        "name": "Буст 1-1",
+        "count": 0,
+        "cost": 500,
+        "icon": "axe",
+        "boost": 5,
+        "isActive": true
+      },
+      "1": {
+        "name": "Буст 1-2",
+        "count": 0,
+        "cost": 2000,
+        "icon": "axe",
+        "boost": 4,
+        "isActive": true
+      },
+      "2": {
+        "name": "Буст 1-3",
+        "count": 0,
+        "cost": 500,
+        "icon": "axe",
+        "boost": 3,
+        "isActive": true
+      },
+      "3": {
+        "name": "Буст 1-4",
+        "count": 0,
+        "cost": 500,
+        "icon": "axe",
+        "boost": 2,
+        "isActive": true
+      },
+      "4": {
+        "name": "Буст 1-5",
+        "count": 0,
+        "cost": 500,
+        "icon": "axe",
+        "boost": 2,
+        "isActive": true
+      }
+    }
   },
   "1": {
     "name": "Буст № 2",
     "cost": 2000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 10
+    "icon": "axe",
+    "boost": 10,
+    "childrens": {
+      "0": {
+        "name": "Буст 2-1",
+        "count": 0,
+        "cost": 5000,
+        "icon": "axe",
+        "boost": 5,
+        "isActive": true
+      },
+      "1": {
+        "name": "Буст 2-2",
+        "count": 0,
+        "cost": 20000,
+        "icon": "axe",
+        "boost": 4,
+        "isActive": true
+      },
+      "2": {
+        "name": "Буст 2-3",
+        "count": 0,
+        "cost": 50000,
+        "icon": "axe",
+        "boost": 3,
+        "isActive": true
+      },
+      "3": {
+        "name": "Буст 2-4",
+        "count": 0,
+        "cost": 100000,
+        "icon": "axe",
+        "boost": 2,
+        "isActive": true
+      },
+      "4": {
+        "name": "Буст 2-5",
+        "count": 0,
+        "cost": 500000,
+        "icon": "axe",
+        "boost": 2,
+        "isActive": true
+      }
+    }
   },
   "2": {
     "name": "Буст № 3",
     "cost": 10000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 50
+    "icon": "axe",
+    "boost": 50,
+    "childrens": {}
   },
   "3": {
     "name": "Буст № 4",
     "cost": 50000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 200
+    "icon": "axe",
+    "boost": 200,
+    "childrens": {}
   },
   "4": {
     "name": "Буст № 5",
     "cost": 100000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 500
+    "icon": "axe",
+    "boost": 500,
+    "childrens": {}
   },
   "5": {
     "name": "Буст № 6",
     "cost": 200000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 1000
+    "icon": "axe",
+    "boost": 1000,
+    "childrens": {}
   },
   "6": {
     "name": "Буст № 7",
     "cost": 500000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 3000
+    "icon": "axe",
+    "boost": 3000,
+    "childrens": {}
   },
   "7": {
     "name": "Буст № 8",
     "cost": 1000000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 1000
+    "icon": "axe",
+    "boost": 1000,
+    "childrens": {}
   },
   "8": {
     "name": "Буст № 9",
     "cost": 2000000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 20000
+    "icon": "axe",
+    "boost": 20000,
+    "childrens": {}
   },
   "9": {
     "name": "Буст № 10",
     "cost": 5000000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 50000
+    "icon": "axe",
+    "boost": 50000,
+    "childrens": {}
   },
   "10": {
     "name": "Буст № 11",
     "cost": 10000000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 100000
+    "icon": "axe",
+    "boost": 100000,
+    "childrens": {}
   },
   "11": {
     "name": "Буст № 12",
     "cost": 20000000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 200000
+    "icon": "axe",
+    "boost": 200000,
+    "childrens": {}
   },
   "12": {
     "name": "Буст № 13",
     "cost": 50000000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 500000
+    "icon": "axe",
+    "boost": 500000,
+    "childrens": {}
   },
   "13": {
     "name": "Буст № 14",
     "cost": 100000000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 1000000
+    "icon": "axe",
+    "boost": 1000000,
+    "childrens": {}
   },
   "14": {
     "name": "Буст № 15",
     "cost": 150000000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 1500000
+    "icon": "axe",
+    "boost": 1500000,
+    "childrens": {}
   },
   "15": {
     "name": "Буст № 16",
     "cost": 200000000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 2000000
+    "icon": "axe",
+    "boost": 2000000,
+    "childrens": {}
   },
   "16": {
     "name": "Буст № 17",
     "cost": 500000000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 5000000
+    "icon": "axe",
+    "boost": 5000000,
+    "childrens": {}
   },
   "17": {
     "name": "Буст № 18",
     "cost": 1000000000,
     "count": 0,
-    "icon": "fas fa-beer",
-    "boost": 8000000
+    "icon": "axe",
+    "boost": 8000000,
+    "childrens": {}
   }
 }
