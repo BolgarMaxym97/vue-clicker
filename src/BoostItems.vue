@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <button class="item-boost-btn" @click="boost(item)" :disabled="parseInt(total) < parseInt(item.cost)">
+          <button class="item-boost-btn " :class="{disableBuy : parseInt(total) < parseInt(item.cost)}" @click="boost(item)" :disabled="parseInt(total) < parseInt(item.cost)">
             <img src="/src/assets/svg/money.svg" width="40em"
                  v-tooltip="item.boost.toLocaleString() + ' зубочисток в секунду. Стоимость: ' + parseInt(item.cost).toLocaleString()"
                  style="cursor: pointer;">
@@ -179,5 +179,8 @@
     max-height: 5em;
     font-weight: bold;
     margin: 1em;
+  }
+  .disableBuy {
+    background-color: #69191e;
   }
 </style>
