@@ -182,5 +182,6 @@
   }
   .disableBuy {
     background-color: #69191e;
+    cursor: default;
   }
 </style>
