@@ -101,7 +101,7 @@
     methods: {
       boost: function (item) {
         this.$parent.loop(item);
-        item.cost += parseInt(item.cost) * 0.05;
+        item.cost += parseInt(item.cost) * 0.5;
         item.count++;
       },
       startBoost: function (item) {
