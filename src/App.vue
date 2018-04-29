@@ -17,7 +17,7 @@
         <div class="col-md-4">
           <div id="main-block">
             <div id="total-count">{{total.toLocaleString()}}</div>
-            <button data-toggle="tooltip" data-placement="top" title="+1" class="btn btn-2 btn-2a"
+            <button v-tooltip="'+1'" class="btn btn-2 btn-2a"
                     @click="increment(clickBoostItem)"><img
               src="/src/assets/svg/toothpic2.svg" width="25em">
             </button>
@@ -38,8 +38,8 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <button class="boost-btn-main" @click="clickBoost" data-toggle="tooltip" data-placement="top"
-                          :title="'На ' + clickBoostItem + ' зубочисток за клик больше'"
+                  <button class="boost-btn-main" @click="clickBoost"
+                          v-tooltip="'На ' + clickBoostItem + ' зубочисток за клик больше'"
                           :disabled="parseInt(total) < parseInt(clickBoostCost)"><img src="/src/assets/svg/cursor.svg"
                                                                                       width="20em"> -
                     {{clickBoostCost.toLocaleString()}} $
@@ -78,7 +78,9 @@
         clickBoostCost: 50,
         currentClickBoost: 0,
         totalBoostPerSecond: 0,
-        messages: [],
+        messages: [
+            'Обновление v0.1: Добавлен графический интерфейс и новые улучшения'
+        ],
       }
     },
     components: {

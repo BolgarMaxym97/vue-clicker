@@ -9,10 +9,8 @@
           <div class="childrens">
             <div class="child" v-for="(child, childIndex) in item.childrens">
               <!--v-if="childIndex == 0 || item.childrens[childIndex - 1].count !== 0"-->
-              <span class="child-item " :title="child.name + ' - улучшает ' + item.name + ' в ' + child.boost + ' раз'"
-                    v-bind:class="{ deactive: !child.isActive || item.count === 0 || total < child.cost }"
-                    data-toggle="tooltip"
-                    data-placement="top">
+              <span class="child-item " v-tooltip="child.name + ' - улучшает ' + item.name + ' в ' + child.boost + ' раз'"
+                    v-bind:class="{ deactive: !child.isActive || item.count === 0 || total < child.cost }">
                 <img :src="'/src/assets/svg/items/childs/'+child.icon+'.svg'" :class="child.icon"
                      @click="boost4boost(item, child)"></span>
             </div>
@@ -20,8 +18,8 @@
         </div>
         <div class="col-md-6">
           <button class="item-boost-btn" @click="boost(item)" :disabled="parseInt(total) < parseInt(item.cost)">
-            <img src="/src/assets/svg/money.svg" width="40em" data-toggle="tooltip" data-placement="top"
-                 :title="item.boost.toLocaleString() + ' зубочисток в секунду. Стоимость: ' + parseInt(item.cost).toLocaleString()"
+            <img src="/src/assets/svg/money.svg" width="40em"
+                 v-tooltip="item.boost.toLocaleString() + ' зубочисток в секунду. Стоимость: ' + parseInt(item.cost).toLocaleString()"
                  style="cursor: pointer;">
           </button>
           <div class="item-desc">{{item.desc}}</div>
